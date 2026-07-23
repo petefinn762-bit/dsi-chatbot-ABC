@@ -149,7 +149,7 @@ try:
             break
 
         resp = chain_with_history.invoke({"input": user_q}, config=memory_config)
-        message.write("Assistant:", (resp.content or ""), "\n")
+        message.write("Assistant:", resp.content, "\n")
 except KeyboardInterrupt:
     message.write("\nGoodbye!")
 
