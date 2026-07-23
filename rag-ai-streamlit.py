@@ -140,7 +140,7 @@ memory_config = {"configurable": {"session_id": "demo-347"}}  # all turns share 
 
 import streamlit as st
 
-with st.chat_message("assistant")
+with st.chat_message("assistant"):
   st.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you! Please type 'exit' to leave the chat.\n")
 
 try:
@@ -150,7 +150,7 @@ try:
             break
 
         resp = chain_with_history.invoke({"input": user_q}, config=memory_config)
-        with st.chat_message("assistant")
+        with st.chat_message("assistant"):
           st.write("Assistant:", (resp.content or ""), "\n")
 except KeyboardInterrupt:
     st.write("\nGoodbye!")
