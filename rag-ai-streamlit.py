@@ -138,6 +138,8 @@ chain_with_history = RunnableWithMessageHistory(
 # type 'quit' or 'exit' to close
 memory_config = {"configurable": {"session_id": "demo-347"}}  # all turns share memory
 
+import streamlit as st
+
 message=st.chat_message("assistant")
 message.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you! Please type 'exit' to leave the chat.\n")
 try:
