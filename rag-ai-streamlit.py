@@ -144,7 +144,7 @@ message=st.chat_message("assistant")
 message.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you! Please type 'exit' to leave the chat.\n")
 try:
     while True:
-        user_q = st.chat_input("Write your message here:")
+        user_q = st.chat_input("Write your message here:", key="user")
         if not user_q or user_q.lower() in {"exit", "quit"}:
             break
 
