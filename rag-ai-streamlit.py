@@ -146,6 +146,8 @@ with st.chat_message("assistant"):
 try:
     while True:
         user_q = st.chat_input("Write your message here:", key="user")
+        with st.chat_message("user"):
+          st.write(user_q)
         if not user_q or user_q.lower() in {"exit", "quit"}:
             break
 
