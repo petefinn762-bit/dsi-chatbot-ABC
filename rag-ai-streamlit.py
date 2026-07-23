@@ -143,20 +143,36 @@ import streamlit as st
 with st.chat_message("assistant"):
   st.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you! Please type 'exit' to leave the chat.\n")
 
-try:
-    while True:
-        user_q = st.chat_input("Write your message here:", key="wibble")
-        with st.chat_message("user"):
-          st.write(user_q)
-        if not user_q or user_q.lower() in {"exit", "quit"}:
-            break
+# 1. Initialize message history in Streamlit's memory if it doesn't exist
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
+# 2. Render all past messages every time the page refreshes
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
+
+# 3. Streamlit handles the "looping" automatically. 
+# This 'if' block only executes WHEN the user types a message and hits enter.
+if user_q := st.chat_input("Write your message here:", key="wibble"):
+    
+    # Check for exit commands (optional, but clean)
+    if user_q.lower().strip() in {"exit", "quit"}:
+        st.write("Session ended. Refresh the page to start over.")
+    else:
+        # Display and save the user message
+        with st.chat_message("user"):
+            st.write(user_q)
+        st.session_state.messages.append({"role": "user", "content": user_q})
+
+        # Generate the LangChain AI response
         resp = chain_with_history.invoke({"input": user_q}, config=memory_config)
+        ai_response = resp.content or ""
+
+        # Display and save the assistant response
         with st.chat_message("assistant"):
-          st.write("Assistant:", (resp.content or ""), "\n")
-except KeyboardInterrupt:
-    with st.chat_message("assistant"):
-      st.write("\nGoodbye!")
+            st.write(ai_response)
+        st.session_state.messages.append({"role": "assistant", "content": ai_response})
 
 
 
