@@ -144,12 +144,12 @@ message=st.chat_message("assistant")
 message.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you! Please type 'exit' to leave the chat.\n")
 try:
     while True:
-        user_q = st.chat_input("You: ").strip()
+        user_q = st.chat_input("You: ")
         if not user_q or user_q.lower() in {"exit", "quit"}:
             break
 
         resp = chain_with_history.invoke({"input": user_q}, config=memory_config)
-        message.write("Assistant:", (resp.content or "").strip(), "\n")
+        message.write("Assistant:", (resp.content or ""), "\n")
 except KeyboardInterrupt:
     message.write("\nGoodbye!")
 
