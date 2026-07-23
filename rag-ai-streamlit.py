@@ -155,7 +155,8 @@ try:
         with st.chat_message("assistant"):
           st.write("Assistant:", (resp.content or ""), "\n")
 except KeyboardInterrupt:
-    st.write("\nGoodbye!")
+    with st.chat_message("assistant"):
+      st.write("\nGoodbye!")
 
 
 
