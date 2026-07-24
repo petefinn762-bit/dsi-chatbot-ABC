@@ -141,7 +141,7 @@ memory_config = {"configurable": {"session_id": "demo-347"}}  # all turns share 
 import streamlit as st
 
 with st.chat_message("assistant"):
-  st.write(":streamlit:Hi, I'm the ABC Grocery virtual assistant - I'd love to help you!  \nPlease type your query in the box below.  \nWhen you are finished, type 'exit' to leave the chat.")
+  st.write(":streamlit: Hi, I'm the ABC Grocery virtual assistant - I'd love to help you!  \nPlease type your query in the box below.  \nWhen you are finished, type 'exit' to leave the chat.")
 
 # 1. Initialize message history in Streamlit's memory if it doesn't exist
 if "messages" not in st.session_state:
