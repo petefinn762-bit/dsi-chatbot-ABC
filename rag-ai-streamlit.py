@@ -141,7 +141,7 @@ memory_config = {"configurable": {"session_id": "demo-347"}}  # all turns share 
 import streamlit as st
 
 with st.chat_message("assistant"):
-  st.write(":streamlit: Hi, I'm the ABC Grocery virtual assistant - I'd love to help you!  \nPlease type your query in the box below.  \nWhen you are finished, type 'exit' to leave the chat.")
+  st.write("Hi, I'm the ABC Grocery virtual assistant - I'd love to help you! :grinning:  \nPlease type your query in the box below. :point_down:  \nWhen you are finished, type 'exit' to leave the chat.")
 
 # 1. Initialize message history in Streamlit's memory if it doesn't exist
 if "messages" not in st.session_state:
@@ -158,7 +158,7 @@ if user_q := st.chat_input("Please type your query here:", key="wibble"):
     
     # Check for exit commands (optional, but clean)
     if user_q.lower().strip() in {"exit", "quit"}:
-        st.write("Thank you for chatting with me today.  \nIf you want to start a new conversation, just refresh the page.")
+        st.write("Thank you for chatting with me today. :relaxed:  \nIf you want to start a new conversation, just refresh the page. :arrows_clockwise:  \nGoodbye! :wave:")
     else:
         # Display and save the user message
         with st.chat_message("user"):
