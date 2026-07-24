@@ -58,7 +58,7 @@ prompt_template = ChatPromptTemplate.from_messages([
      "WHEN INFORMATION IS MISSING\n"
      "8) If <context> is empty OR does not contain the needed company information to answer the question, DO NOT answer from memory.\n"
      "9) In that case, respond with this fallback message (verbatim):\n"
-     "   \"I'm afraid I don’t have access to that information at the moment.\nPlease email human@abc-grocery.com and they will be glad to assist you!\n"
+     "   \"I'm afraid I don’t have access to that information at the moment.  \nPlease email human@abc-grocery.com and they will be glad to assist you!\n"
      "\n"
      "STYLE\n"
      "10) Be concise, factual, and clear. Answer only the question asked. Avoid speculation or extra advice beyond <context>."
@@ -141,7 +141,7 @@ memory_config = {"configurable": {"session_id": "demo-347"}}  # all turns share 
 import streamlit as st
 
 with st.chat_message("assistant"):
-  st.write("\fHi, I'm the ABC Grocery virtual assistant - I'd love to help you!\nPlease type your query in the box below.\nWhen you are finished, type 'exit' to leave the chat.\n")
+  st.write(":streamlit:Hi, I'm the ABC Grocery virtual assistant - I'd love to help you!  \nPlease type your query in the box below.  \nWhen you are finished, type 'exit' to leave the chat.")
 
 # 1. Initialize message history in Streamlit's memory if it doesn't exist
 if "messages" not in st.session_state:
@@ -158,7 +158,7 @@ if user_q := st.chat_input("Please type your query here:", key="wibble"):
     
     # Check for exit commands (optional, but clean)
     if user_q.lower().strip() in {"exit", "quit"}:
-        st.write("Thank you for chatting with me today. If you want to start a new conversation, just refresh the page.")
+        st.write("Thank you for chatting with me today.  \nIf you want to start a new conversation, just refresh the page.")
     else:
         # Display and save the user message
         with st.chat_message("user"):
